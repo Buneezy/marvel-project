@@ -73,12 +73,8 @@ body {
   padding: 1.2rem;
   border: 2px solid red;
 }
-.header .search::placeholder{
-  color: black;
-  
-}
 .content {
-  width: 80%;
+  width: 60%;
   margin: 3rem auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -266,21 +262,35 @@ input:checked + .slider:before {
 .switch-checkbox {
   padding: 10px;
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 921px) {
   .box-content img {
     width: 160px;
     height: 160px;
   }
+ .content{
+  grid-template-columns:  1fr 1fr ; 
+ }
 }
 @media only screen and (max-width: 450px) {
   .container {
     right: 50px;
   }
-  .header1 .search{
+  .header1 .search {
     margin-left: 1rem;
   }
-  .header .search{
+  .header .search {
     margin-left: 1rem;
+  }
+  .header .bg img {
+    min-width: 415px;
+  }
+  .header1 .bg img {
+    min-width: 415px;
+  }
+  .content {
+    width: 80%;
+    grid-template-columns:  1fr 1fr;
+    
   }
 }
 @media only screen and (max-width: 400px) {
