@@ -1,15 +1,12 @@
 import React from "react";
-import { Card } from "./Card";
+import { Cards } from "./Cards";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export const Main = () => {
-  const [url, setUrl] = useState(
-    `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=77d5990535d34800e8fbc584007368e1&hash=68119c97d618cf32618d6e7aa03348a7`
-  );
-  const [item, setItem] = useState();
-  const [search, setSearch] = useState("");
+  const [items, setItems] = useState();
+
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -22,16 +19,28 @@ export const Main = () => {
     }
   }, [isDarkMode]);
   useEffect(() => {
+    const url =
+      "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=77d5990535d34800e8fbc584007368e1&hash=68119c97d618cf32618d6e7aa03348a7";
     const fetch = async () => {
       const res = await axios.get(url);
-      setItem(res.data.data.results);
+      setItems(res.data.data.results);
     };
     fetch();
-  }, [url]);
-  const searchMarvel = () => {
-    setUrl(
-      `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&ts=1&apikey=77d5990535d34800e8fbc584007368e1&hash=68119c97d618cf32618d6e7aa03348a7`
-    );
+  }, []);
+
+  const searchMarvel = (search) => {
+    let url = "";
+    if (search === "") {
+      url =
+        "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=77d5990535d34800e8fbc584007368e1&hash=68119c97d618cf32618d6e7aa03348a7";
+    } else {
+      url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&ts=1&apikey=77d5990535d34800e8fbc584007368e1&hash=68119c97d618cf32618d6e7aa03348a7`;
+    }
+    const fetch = async () => {
+      const res = await axios.get(url);
+      setItems(res.data.data.results);
+    };
+    fetch();
   };
   return (
     <>
@@ -62,13 +71,12 @@ export const Main = () => {
               type="search"
               placeholder="Search Hero"
               className="search"
-              onChange={(e) => setSearch(e.target.value)}
-              onKeyDown={searchMarvel}
+              onChange={(e) => searchMarvel(e.target.value)}
             />
           </div>
         </div>
         <div className="content">
-          {!item ? <p>Not Found</p> : <Card data={item} />}
+          {!items ? <p>Not Found</p> : <Cards data={items} />}
         </div>
       </div>
     </>
