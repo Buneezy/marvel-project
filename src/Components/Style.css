@@ -268,6 +268,17 @@ input:checked + .slider:before {
     height: 160px;
   }
 }
+@media only screen and (max-width: 450px) {
+  .container {
+    right: 50px;
+  }
+  .header1 .search{
+    margin-left: 1rem;
+  }
+  .header .search{
+    margin-left: 1rem;
+  }
+}
 @media only screen and (max-width: 400px) {
   .header {
     min-width: 399px;
@@ -290,5 +301,8 @@ input:checked + .slider:before {
   .box-content img {
     width: 100px;
     height: 100px;
+  }
+  .container {
+    left: 270px;
   }
 }
