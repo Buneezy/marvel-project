@@ -275,6 +275,12 @@ input:checked + .slider:before {
   .container {
     right: 50px;
   }
+  .header1 .bg img {
+    object-fit: cover;
+  }
+  .header .bg img {
+    object-fit: cover;
+  }
   .header1 .search {
     margin-left: 1rem;
   }

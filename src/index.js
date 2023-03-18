@@ -11,7 +11,7 @@ root.render(
     <App />
   </BrowserRouter>
 );
-const btn = document.getElementById("btn");
+
 
 
 // If you want to start measuring performance in your app, pass a function
