@@ -287,12 +287,7 @@ input:checked + .slider:before {
   .header .search {
     margin-left: 1rem;
   }
-  .header .bg img {
-    min-width: 415px;
-  }
-  .header1 .bg img {
-    min-width: 415px;
-  }
+
   .header .search::placeholder {
     color: black;
   }
